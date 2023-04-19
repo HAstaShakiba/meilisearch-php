@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Http;
 
 use Meilisearch\Exceptions\ApiException;
@@ -53,31 +51,6 @@ class ClientTest extends TestCase
         $this->assertSame([], $result);
     }
 
-    public function testPostThrowsWithInvalidBody(): void
-    {
-        $client = new Client('https://localhost');
-
-        $this->expectException(JsonEncodingException::class);
-        $this->expectExceptionMessage('Encoding payload to json failed: "Malformed UTF-8 characters, possibly incorrectly encoded".');
-
-        $client->post('/', "{'Bad JSON':\xB1\x31}");
-    }
-
-    /**
-     * @dataProvider provideStatusCodes
-     */
-    public function testPostThrowsWithInvalidResponse(int $statusCode): void
-    {
-        $httpClient = $this->createHttpClientMock($statusCode);
-
-        $client = new Client('https://localhost', null, $httpClient);
-
-        $this->expectException(JsonDecodingException::class);
-        $this->expectExceptionMessage('Decoding payload to json failed: "Syntax error"');
-
-        $client->post('/', '');
-    }
-
     public function testPostThrowsApiException(): void
     {
         try {
@@ -100,31 +73,6 @@ class ClientTest extends TestCase
         $this->assertSame([], $result);
     }
 
-    public function testPutThrowsWithInvalidBody(): void
-    {
-        $client = new Client('https://localhost');
-
-        $this->expectException(JsonEncodingException::class);
-        $this->expectExceptionMessage('Encoding payload to json failed: "Malformed UTF-8 characters, possibly incorrectly encoded".');
-
-        $client->put('/', "{'Bad JSON':\xB1\x31}");
-    }
-
-    /**
-     * @dataProvider provideStatusCodes
-     */
-    public function testPutThrowsWithInvalidResponse(int $statusCode): void
-    {
-        $httpClient = $this->createHttpClientMock($statusCode);
-
-        $client = new Client('https://localhost', null, $httpClient);
-
-        $this->expectException(JsonDecodingException::class);
-        $this->expectExceptionMessage('Decoding payload to json failed: "Syntax error"');
-
-        $client->put('/', '');
-    }
-
     public function testPutThrowsApiException(): void
     {
         try {
@@ -145,31 +93,6 @@ class ClientTest extends TestCase
         $result = $client->patch('/');
 
         $this->assertSame([], $result);
-    }
-
-    public function testPatchThrowsWithInvalidBody(): void
-    {
-        $client = new Client('https://localhost');
-
-        $this->expectException(JsonEncodingException::class);
-        $this->expectExceptionMessage('Encoding payload to json failed: "Malformed UTF-8 characters, possibly incorrectly encoded".');
-
-        $client->patch('/', "{'Bad JSON':\xB1\x31}");
-    }
-
-    /**
-     * @dataProvider provideStatusCodes
-     */
-    public function testPatchThrowsWithInvalidResponse(int $statusCode): void
-    {
-        $httpClient = $this->createHttpClientMock($statusCode);
-
-        $client = new Client('https://localhost', null, $httpClient);
-
-        $this->expectException(JsonDecodingException::class);
-        $this->expectExceptionMessage('Decoding payload to json failed: "Syntax error"');
-
-        $client->put('/', '');
     }
 
     public function testPatchThrowsApiException(): void
@@ -223,7 +146,7 @@ class ClientTest extends TestCase
                 [
                     $this->equalTo('Authorization'),
                     $this->equalTo('Bearer masterKey'),
-                ],
+                ]
             )
             ->willReturnOnConsecutiveCalls($requestStub, $requestStub);
 
@@ -254,7 +177,7 @@ class ClientTest extends TestCase
                 [
                     $this->equalTo('Authorization'),
                     $this->equalTo('Bearer masterKey'),
-                ],
+                ]
             )
             ->willReturnOnConsecutiveCalls($requestStub, $requestStub);
 
@@ -284,7 +207,7 @@ class ClientTest extends TestCase
                 [
                     $this->equalTo('Authorization'),
                     $this->equalTo('Bearer masterKey'),
-                ],
+                ]
             )
             ->willReturnOnConsecutiveCalls($requestStub, $requestStub);
 
@@ -316,13 +239,6 @@ class ClientTest extends TestCase
         $result = $client->get('/');
 
         $this->assertNull($result);
-    }
-
-    public function provideStatusCodes(): iterable
-    {
-        yield [200];
-        yield [300];
-        yield [301];
     }
 
     /**

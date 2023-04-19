@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Meilisearch\Contracts;
 
 use Meilisearch\Endpoints\Delegates\TasksQueryTrait;
@@ -10,7 +8,10 @@ class DeleteTasksQuery
 {
     use TasksQueryTrait;
 
-    private array $canceledBy;
+    /**
+     * @var array
+     */
+    private $canceledBy;
 
     public function setCanceledBy(array $canceledBy)
     {

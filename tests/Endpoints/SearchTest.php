@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Endpoints;
 
 use Meilisearch\Endpoints\Indexes;
@@ -10,7 +8,11 @@ use Tests\TestCase;
 
 final class SearchTest extends TestCase
 {
-    private Indexes $index;
+
+    /**
+     * @var \Meilisearch\Endpoints\Indexes
+     */
+    private $index;
 
     protected function setUp(): void
     {
@@ -793,7 +795,7 @@ final class SearchTest extends TestCase
 
         $response = $this->index->search(
             null,
-            ['facets' => ['info.reviewNb']],
+            ['facets' => ['info.reviewNb']]
         );
 
         $this->assertEquals(['info.reviewNb' => ['min' => 50, 'max' => 1000]], $response->getFacetStats());

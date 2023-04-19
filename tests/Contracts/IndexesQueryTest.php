@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Contracts;
 
 use Meilisearch\Contracts\IndexesQuery;

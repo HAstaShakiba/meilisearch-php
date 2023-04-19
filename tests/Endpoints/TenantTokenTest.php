@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Endpoints;
 
 use Meilisearch\Client;
@@ -13,8 +11,14 @@ final class TenantTokenTest extends TestCase
 {
     private $key;
     private $privateKey;
-    private Client $privateClient;
-    private string $indexName;
+    /**
+     * @var \Meilisearch\Client
+     */
+    private $privateClient;
+    /**
+     * @var string
+     */
+    private $indexName;
 
     protected function setUp(): void
     {

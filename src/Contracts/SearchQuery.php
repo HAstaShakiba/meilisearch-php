@@ -1,30 +1,84 @@
 <?php
 
-declare(strict_types=1);
 
 namespace Meilisearch\Contracts;
 
 class SearchQuery
 {
-    private string $indexUid;
+    /**
+     * @var string
+     */
+    private $indexUid;
 
-    private string $q;
-    private array $filter;
-    private array $attributesToRetrieve;
-    private array $attributesToCrop;
-    private ?int $cropLength;
-    private array $attributesToHighlight;
-    private string $cropMarker;
-    private string $highlightPreTag;
-    private string $highlightPostTag;
-    private array $facets;
-    private ?bool $showMatchesPosition;
-    private array $sort;
-    private string $matchingStrategy;
-    private ?int $offset;
-    private ?int $limit;
-    private ?int $hitsPerPage;
-    private ?int $page;
+    /**
+     * @var string
+     */
+    private $q;
+    /**
+     * @var array
+     */
+    private $filter;
+    /**
+     * @var array
+     */
+    private $attributesToRetrieve;
+    /**
+     * @var array
+     */
+    private $attributesToCrop;
+    /**
+     * @var int|null
+     */
+    private $cropLength;
+
+    /**
+     * @var array
+     */
+    private $attributesToHighlight;
+    /**
+     * @var string
+     */
+    private $cropMarker;
+    /**
+     * @var string
+     */
+    private $highlightPreTag;
+    /**
+     * @var string
+     */
+    private $highlightPostTag;
+    /**
+     * @var array
+     */
+    private $facets;
+    /**
+     * @var bool|null
+     */
+    private $showMatchesPosition;
+    /**
+     * @var array
+     */
+    private $sort;
+    /**
+     * @var string
+     */
+    private $matchingStrategy;
+    /**
+     * @var int|null
+     */
+    private $offset;
+    /**
+     * @var int|null
+     */
+    private $limit;
+    /**
+     * @var int|null
+     */
+    private $hitsPerPage;
+    /**
+     * @var int|null
+     */
+    private $page;
 
     public function setQuery(string $q): SearchQuery
     {

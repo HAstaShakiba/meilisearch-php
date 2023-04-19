@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 
 namespace Meilisearch\Contracts;
 
@@ -10,9 +9,18 @@ class TasksQuery
 {
     use TasksQueryTrait;
 
-    private int $from;
-    private int $limit;
-    private array $canceledBy;
+    /**
+     * @var int
+     */
+    private $from;
+    /**
+     * @var int
+     */
+    private $limit;
+    /**
+     * @var array
+     */
+    private $canceledBy;
 
     public function setFrom(int $from): TasksQuery
     {

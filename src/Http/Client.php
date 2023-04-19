@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Meilisearch\Http;
 
 use Http\Discovery\Psr17FactoryDiscovery;
@@ -24,13 +22,34 @@ use Psr\Http\Message\StreamFactoryInterface;
 
 class Client implements Http
 {
-    private ClientInterface $http;
-    private RequestFactoryInterface $requestFactory;
-    private StreamFactoryInterface $streamFactory;
-    private array $headers;
-    private ?string $apiKey;
-    private string $baseUrl;
-    private Json $json;
+    /**
+     * @var \Psr\Http\Client\ClientInterface
+     */
+    private $http;
+    /**
+     * @var \Psr\Http\Message\RequestFactoryInterface
+     */
+    private $requestFactory;
+    /**
+     * @var \Psr\Http\Message\StreamFactoryInterface
+     */
+    private $streamFactory;
+    /**
+     * @var array|string[]
+     */
+    private $headers;
+    /**
+     * @var string|null
+     */
+    private $apiKey;
+    /**
+     * @var string
+     */
+    private $baseUrl;
+    /**
+     * @var \Meilisearch\Http\Serialize\Json
+     */
+    private $json;
 
     /**
      * Client constructor.

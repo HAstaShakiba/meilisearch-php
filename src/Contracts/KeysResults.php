@@ -1,14 +1,22 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Meilisearch\Contracts;
 
 class KeysResults extends Data
 {
-    private int $offset;
-    private int $limit;
-    private int $total;
+
+    /**
+     * @var int|mixed
+     */
+    private $offset;
+    /**
+     * @var int|mixed
+     */
+    private $limit;
+    /**
+     * @var int|mixed
+     */
+    private $total;
 
     public function __construct(array $params)
     {

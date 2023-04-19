@@ -1,14 +1,22 @@
 <?php
 
-declare(strict_types=1);
 
 namespace Meilisearch\Contracts;
 
 class DocumentsQuery
 {
-    private int $offset;
-    private int $limit;
-    private array $fields;
+    /**
+     * @var int
+     */
+    private $offset;
+    /**
+     * @var int
+     */
+    private $limit;
+    /**
+     * @var array
+     */
+    private $fields;
 
     public function setOffset(int $offset): DocumentsQuery
     {

@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Meilisearch\Search;
 
 class SearchResult implements \Countable, \IteratorAggregate
@@ -9,42 +7,74 @@ class SearchResult implements \Countable, \IteratorAggregate
     /**
      * @var array<int, array<string, mixed>>
      */
-    private array $hits;
+    private $hits;
 
     /**
      * `estimatedTotalHits` is the attributes returned by the Meilisearch server
      * and its value will not be modified by the methods in this class.
      * Please, use `hitsCount` if you want to know the real size of the `hits` array at any time.
+     *
+     * @var int|null
      */
-    private ?int $estimatedTotalHits;
-    private ?int $hitsCount;
-    private ?int $offset;
-    private ?int $limit;
+    private $estimatedTotalHits;
+    /**
+     * @var int|mixed|null
+     */
+    private $hitsCount;
+    /**
+     * @var int|mixed|null
+     */
+    private $offset;
+    /**
+     * @var int|mixed|null
+     */
+    private $limit;
 
-    private ?int $hitsPerPage;
-    private ?int $page;
-    private ?int $totalPages;
-    private ?int $totalHits;
+    /**
+     * @var int|mixed|null
+     */
+    private $hitsPerPage;
+    /**
+     * @var int|mixed|null
+     */
+    private $page;
+    /**
+     * @var int|mixed|null
+     */
+    private $totalPages;
+    /**
+     * @var int|mixed|null
+     */
+    private $totalHits;
 
-    private int $processingTimeMs;
-    private bool $numberedPagination;
+    /**
+     * @var int|mixed
+     */
+    private $processingTimeMs;
+    /**
+     * @var bool
+     */
+    private $numberedPagination;
 
-    private string $query;
+    /**
+     * @var string|mixed
+     */
+    private $query;
 
     /**
      * @var array<string, mixed>
      */
-    private array $facetDistribution;
+    private $facetDistribution;
 
     /**
      * @var array<string, mixed>
      */
-    private array $facetStats;
+    private $facetStats;
 
     /**
      * @var array<string, mixed>
      */
-    private array $raw;
+    private $raw;
 
     public function __construct(array $body)
     {

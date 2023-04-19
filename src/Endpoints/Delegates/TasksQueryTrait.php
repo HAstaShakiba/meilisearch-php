@@ -1,21 +1,51 @@
 <?php
 
-declare(strict_types=1);
 
 namespace Meilisearch\Endpoints\Delegates;
 
 trait TasksQueryTrait
 {
-    private array $types;
-    private array $statuses;
-    private array $indexUids;
-    private array $uids;
-    private \DateTime $beforeEnqueuedAt;
-    private \DateTime $afterEnqueuedAt;
-    private \DateTime $beforeStartedAt;
-    private \DateTime $afterStartedAt;
-    private \DateTime $beforeFinishedAt;
-    private \DateTime $afterFinishedAt;
+    /**
+     * @var array
+     */
+    private $types;
+
+    /**
+     * @var array
+     */
+    private $statuses;
+    /**
+     * @var array
+     */
+    private $indexUids;
+    /**
+     * @var array
+     */
+    private $uids;
+    /**
+     * @var \DateTime
+     */
+    private $beforeEnqueuedAt;
+    /**
+     * @var \DateTime
+     */
+    private $afterEnqueuedAt;
+    /**
+     * @var \DateTime
+     */
+    private $beforeStartedAt;
+    /**
+     * @var \DateTime
+     */
+    private $afterStartedAt;
+    /**
+     * @var \DateTime
+     */
+    private $beforeFinishedAt;
+    /**
+     * @var \DateTime
+     */
+    private $afterFinishedAt;
 
     public function setTypes(array $types)
     {
