@@ -1,14 +1,19 @@
 <?php
 
-declare(strict_types=1);
 
 namespace Meilisearch\Contracts;
 
 abstract class Endpoint
 {
     protected const PATH = '';
-    protected Http $http;
-    protected ?string $apiKey;
+    /**
+     * @var \Meilisearch\Contracts\Http
+     */
+    protected $http;
+    /**
+     * @var string|null
+     */
+    protected $apiKey;
 
     public function __construct(Http $http, ?string $apiKey = null)
     {

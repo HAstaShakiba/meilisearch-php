@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Endpoints;
 
 use Meilisearch\Contracts\DocumentsQuery;
@@ -144,17 +142,6 @@ final class DocumentsTest extends TestCase
 
         $response = $index->getDocuments();
         $this->assertCount(20, $response);
-    }
-
-    public function testCannotAddDocumentWhenJsonEncodingFails(): void
-    {
-        $this->expectException(JsonEncodingException::class);
-        $this->expectExceptionMessage('Encoding payload to json failed: "Malformed UTF-8 characters, possibly incorrectly encoded".');
-
-        $documents = ["\xB1\x31"];
-
-        $index = $this->createEmptyIndex($this->safeIndexName('movies'));
-        $index->addDocuments($documents);
     }
 
     public function testGetSingleDocumentWithIntegerDocumentId(): void

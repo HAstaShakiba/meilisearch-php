@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 
 namespace Meilisearch\Endpoints;
 
@@ -13,15 +12,42 @@ class Keys extends Endpoint
 {
     protected const PATH = '/keys';
 
-    private ?string $uid;
-    private ?string $name;
-    private ?string $key;
-    private ?string $description;
-    private ?array $actions;
-    private ?array $indexes;
-    private ?\DateTime $expiresAt;
-    private ?\DateTime $createdAt;
-    private ?\DateTime $updatedAt;
+    /**
+     * @var string|mixed|null
+     */
+    private $uid;
+    /**
+     * @var string|mixed|null
+     */
+    private $name;
+    /**
+     * @var string|mixed|null
+     */
+    private $key;
+    /**
+     * @var string|mixed|null
+     */
+    private $description;
+    /**
+     * @var array|mixed|null
+     */
+    private $actions;
+    /**
+     * @var array|mixed|null
+     */
+    private $indexes;
+    /**
+     * @var \DateTime|mixed|null
+     */
+    private $expiresAt;
+    /**
+     * @var \DateTime|mixed|null
+     */
+    private $createdAt;
+    /**
+     * @var \DateTime|mixed|null
+     */
+    private $updatedAt;
 
     public function __construct(Http $http, $uid = null, $name = null, $key = null, $description = null, $actions = null, $indexes = null, $expiresAt = null, $createdAt = null, $updatedAt = null)
     {
@@ -47,7 +73,7 @@ class Keys extends Endpoint
             $attributes['key'],
             $attributes['description'],
             $attributes['actions'],
-            $attributes['indexes'],
+            $attributes['indexes']
         );
         if ($attributes['expiresAt']) {
             $key->expiresAt = $this->createDate($attributes['expiresAt']);

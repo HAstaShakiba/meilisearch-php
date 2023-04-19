@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Endpoints;
 
 use Meilisearch\Contracts\DeleteTasksQuery;
@@ -12,8 +10,15 @@ use Tests\TestCase;
 
 final class IndexTest extends TestCase
 {
-    private Indexes $index;
-    private string $indexName;
+
+    /**
+     * @var \Meilisearch\Endpoints\Indexes
+     */
+    private $index;
+    /**
+     * @var string
+     */
+    private $indexName;
 
     protected function setUp(): void
     {
@@ -43,7 +48,7 @@ final class IndexTest extends TestCase
                 'disableOnWords' => [],
                 'disableOnAttributes' => [],
             ],
-            $this->index->getTypoTolerance(),
+            $this->index->getTypoTolerance()
         );
     }
 

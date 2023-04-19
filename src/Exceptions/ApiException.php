@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Meilisearch\Exceptions;
 
 use Psr\Http\Message\ResponseInterface;
@@ -10,9 +8,18 @@ class ApiException extends \Exception
 {
     public $httpStatus = 0;
     public $message = null;
-    public ?string $errorCode;
-    public ?string $errorType;
-    public ?string $errorLink;
+    /**
+     * @var string|null
+     */
+    public $errorCode;
+    /**
+     * @var string|null
+     */
+    public $errorType;
+    /**
+     * @var string|null
+     */
+    public $errorLink;
     public $httpBody = null;
 
     public function __construct(ResponseInterface $response, $httpBody, $previous = null)

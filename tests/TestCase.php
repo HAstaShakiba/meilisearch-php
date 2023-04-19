@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests;
 
 use Meilisearch\Client;
@@ -41,9 +39,18 @@ abstract class TestCase extends BaseTestCase
         'expiresAt' => null,
     ];
 
-    protected Client $client;
-    protected string $host;
-    protected ?string $defaultKey;
+    /**
+     * @var \Meilisearch\Client
+     */
+    protected $client;
+    /**
+     * @var array|false|string
+     */
+    protected $host;
+    /**
+     * @var string|null
+     */
+    protected $defaultKey;
 
     protected function setUp(): void
     {

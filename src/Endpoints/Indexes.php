@@ -1,6 +1,5 @@
 <?php
 
-declare(strict_types=1);
 
 namespace Meilisearch\Endpoints;
 
@@ -25,11 +24,26 @@ class Indexes extends Endpoint
 
     protected const PATH = '/indexes';
 
-    private ?string $uid;
-    private ?string $primaryKey;
-    private ?\DateTime $createdAt;
-    private ?\DateTime $updatedAt;
-    private Tasks $tasks;
+    /**
+     * @var string|mixed|null
+     */
+    private $uid;
+    /**
+     * @var string|mixed|null
+     */
+    private $primaryKey;
+    /**
+     * @var \DateTime|mixed|null
+     */
+    private $createdAt;
+    /**
+     * @var \DateTime|mixed|null
+     */
+    private $updatedAt;
+    /**
+     * @var \Meilisearch\Endpoints\Tasks
+     */
+    private $tasks;
 
     public function __construct(Http $http, $uid = null, $primaryKey = null, $createdAt = null, $updatedAt = null)
     {
@@ -49,7 +63,7 @@ class Indexes extends Endpoint
             $attributes['uid'],
             $attributes['primaryKey'],
             static::parseDate($attributes['createdAt']),
-            static::parseDate($attributes['updatedAt']),
+            static::parseDate($attributes['updatedAt'])
         );
     }
 

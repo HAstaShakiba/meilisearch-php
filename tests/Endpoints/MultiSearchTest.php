@@ -1,17 +1,20 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Endpoints;
 
 use Meilisearch\Contracts\SearchQuery;
-use Meilisearch\Endpoints\Indexes;
 use Tests\TestCase;
 
 final class MultiSearchTest extends TestCase
 {
-    private Indexes $booksIndex;
-    private Indexes $songsIndex;
+    /**
+     * @var \Meilisearch\Endpoints\Indexes
+     */
+    private $booksIndex;
+    /**
+     * @var \Meilisearch\Endpoints\Indexes
+     */
+    private $songsIndex;
 
     protected function setUp(): void
     {

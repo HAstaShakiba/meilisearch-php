@@ -1,14 +1,22 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Meilisearch\Contracts;
 
 class TasksResults extends Data
 {
-    private int $next;
-    private int $limit;
-    private int $from;
+
+    /**
+     * @var int|mixed
+     */
+    private $next;
+    /**
+     * @var int|mixed
+     */
+    private $limit;
+    /**
+     * @var int|mixed
+     */
+    private $from;
 
     public function __construct(array $params)
     {

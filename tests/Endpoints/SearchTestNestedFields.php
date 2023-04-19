@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Endpoints;
 
 use Meilisearch\Endpoints\Indexes;
@@ -9,7 +7,11 @@ use Tests\TestCase;
 
 final class SearchTestNestedFields extends TestCase
 {
-    private Indexes $index;
+
+    /**
+     * @var \Meilisearch\Endpoints\Indexes
+     */
+    private $index;
 
     protected function setUp(): void
     {

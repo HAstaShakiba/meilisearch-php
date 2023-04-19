@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tests\Search;
 
 use Meilisearch\Search\SearchResult;
@@ -9,9 +7,19 @@ use PHPUnit\Framework\TestCase;
 
 final class SearchResultTest extends TestCase
 {
-    private array $basicServerResponse = [];
-    private SearchResult $resultWithFacets;
-    private SearchResult $basicResult;
+
+    /**
+     * @var array
+     */
+    private $basicServerResponse = [];
+    /**
+     * @var \Meilisearch\Search\SearchResult
+     */
+    private $resultWithFacets;
+    /**
+     * @var \Meilisearch\Search\SearchResult
+     */
+    private $basicResult;
 
     protected function setUp(): void
     {

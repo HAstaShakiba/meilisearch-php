@@ -1,10 +1,7 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Meilisearch;
 
-use Meilisearch\Contracts\Http as HttpContract;
 use Meilisearch\Endpoints\Delegates\HandlesDumps;
 use Meilisearch\Endpoints\Delegates\HandlesIndex;
 use Meilisearch\Endpoints\Delegates\HandlesKeys;
@@ -33,15 +30,42 @@ class Client
     use HandlesSystem;
     use HandlesMultiSearch;
 
-    private HttpContract $http;
-    private Indexes $index;
-    private Health $health;
-    private Version $version;
-    private Keys $keys;
-    private Stats $stats;
-    private Tasks $tasks;
-    private Dumps $dumps;
-    private TenantToken $tenantToken;
+    /**
+     * @var \Meilisearch\Contracts\Http|\Meilisearch\Http\Client
+     */
+    private $http;
+    /**
+     * @var \Meilisearch\Endpoints\Indexes
+     */
+    private $index;
+    /**
+     * @var \Meilisearch\Endpoints\Health
+     */
+    private $health;
+    /**
+     * @var \Meilisearch\Endpoints\Version
+     */
+    private $version;
+    /**
+     * @var \Meilisearch\Endpoints\Keys
+     */
+    private $keys;
+    /**
+     * @var \Meilisearch\Endpoints\Stats
+     */
+    private $stats;
+    /**
+     * @var \Meilisearch\Endpoints\Tasks
+     */
+    private $tasks;
+    /**
+     * @var \Meilisearch\Endpoints\Dumps
+     */
+    private $dumps;
+    /**
+     * @var \Meilisearch\Endpoints\TenantToken
+     */
+    private $tenantToken;
 
     public function __construct(
         string $url,

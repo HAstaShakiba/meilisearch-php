@@ -1,13 +1,18 @@
 <?php
 
-declare(strict_types=1);
 
 namespace Meilisearch\Contracts;
 
 class KeysQuery
 {
-    private int $offset;
-    private int $limit;
+    /**
+     * @var int
+     */
+    private $offset;
+    /**
+     * @var int
+     */
+    private $limit;
 
     public function setOffset(int $offset): KeysQuery
     {
